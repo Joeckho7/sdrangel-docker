@@ -80,7 +80,7 @@ if [ ! -z "$net_host" ]; then
     udp_conn=""
 fi
 # Start of launching script
-docker run -it --rm \
+docker run -it \
     --privileged \
     --name ${container_name} \
     ${gui_opts} \
@@ -93,4 +93,6 @@ docker run -it --rm \
     -v="/run/user/${USER_UID}/pulse:/run/user/${USER_UID}/pulse" \
     -v="/var/run/dbus:/var/run/dbus" \
     -v="/var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket" \
-    sdrangel/${flavor}:${image_tag}
+    -v="/dev/bus/usb:/dev/bus/usb" \
+    -p="127.0.0.1:2222:22" \
+   sdrangel/${flavor}:${image_tag}

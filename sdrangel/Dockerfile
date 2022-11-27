@@ -26,7 +26,12 @@ RUN sudo apt-get update && sudo apt-get -y install \
     nmap \
     net-tools \
     python3-requests \
-    python3-flask
+    python3-flask \
+    mc \
+    screen \
+    nano \
+    aptitude \
+    ssh
 
 # Install base build packages dependencies - step 1
 RUN sudo apt-get update && sudo apt-get -y install \
@@ -110,6 +115,16 @@ RUN sudo apt-get update && sudo apt-get -y install \
 RUN sudo mkdir /opt/build /opt/install \
     && sudo chown sdr:sdr /opt/build /opt/install
 
+# Init sshd
+COPY sshd_config_test_clion ./
+RUN sudo cp sshd_config_test_clion /etc/ssh/sshd_config_test_clion \
+  && sudo mkdir /run/sshd
+
+#RUN sudo useradd -m user
+#RUN sudo yes password | sudo passwd user
+#RUN sudo usermod -s /bin/bash user
+
+CMD ["sudo", "/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config_test_clion"]
 
 # APTdec
 FROM base AS aptdec
