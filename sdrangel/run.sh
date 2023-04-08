@@ -95,4 +95,5 @@ docker run -it \
     -v="/var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket" \
     -v="/dev/bus/usb:/dev/bus/usb" \
     -p="127.0.0.1:2222:22" \
+    -p="127.0.0.1:1234:1234" \
    sdrangel/${flavor}:${image_tag}

@@ -38,6 +38,8 @@ RUN sudo apt-get update && sudo apt-get -y install \
     git \
     cmake \
     g++ \
+    gdb \
+    gdbserver \
     pkg-config \
     autoconf \
     automake \
@@ -124,7 +126,8 @@ RUN sudo cp sshd_config_test_clion /etc/ssh/sshd_config_test_clion \
 #RUN sudo yes password | sudo passwd user
 #RUN sudo usermod -s /bin/bash user
 
-CMD ["sudo", "/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config_test_clion"]
+#CMD below will be an option for ENTRYPOINT, therefore comment it out and run it manually
+#CMD ["sudo", "/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config_test_clion"]
 
 # APTdec
 FROM base AS aptdec

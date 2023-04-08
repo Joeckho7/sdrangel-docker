@@ -1,5 +1,5 @@
-LogLevel DEBUG2
+#LogLevel DEBUG2
 PermitRootLogin yes
 PasswordAuthentication yes
-AllowТcpForwarding yes
+AllowTcpForwarding yes
 Subsystem sftp /usr/lib/openssh/sftp-server
